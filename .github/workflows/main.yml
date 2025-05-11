@@ -1,16 +1,23 @@
-name: Node Build.
+name: Node Build
 
 on: [push]
 
 jobs:
-    mainbuild:
-        runs-on: ${{ matrix.os }}
-     
+  mainbuild:
+    runs-on: ${{ matrix.os }}
     strategy:
-        matrix:
-            node-version: [12.x]
-            os: [windows-latest]
-         
+      matrix:
+        node-version: [18.x]
+        os: [windows-latest]
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix['node-version'] }}
+
       - name: Run a one-line script
         run: echo "Hello World"
