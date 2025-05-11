@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
     mainbuild:
- 
         runs-on: ${{ matrix.os }}
      
     strategy:
@@ -13,5 +12,5 @@ jobs:
             os: [windows-latest]
          
     steps:
-
+      - name: Run a one-line script
         run: echo "Hello World"
